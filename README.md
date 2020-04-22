@@ -8,19 +8,19 @@ most of the credit goes to [anthinkingcoder](https://github.com/anthinkingcoder/
 ## usage
 
 ```bash
-npm install vue-simple-magnifier
+npm install v-simple-magnifier
 # or 
-yarn add vue-simple-magnifier
+yarn add v-simple-magnifier
 ```
 
 then add it to your vue application:
 
 ```js
 // add it to your vue application:
-import VStickyElement from 'vue-sticky-element';
+import VSimpleMagnifier from 'v-simple-magnifier';
 import Vue from 'vue';
 
-Vue.use(VStickyElement);
+Vue.use(VSimpleMagnifier);
 ```
 
 then use it: 

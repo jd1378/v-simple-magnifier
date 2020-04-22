@@ -1,5 +1,5 @@
 {
-  "name": "vue-simple-magnifier",
+  "name": "v-simple-magnifier",
   "version": "1.0.0",
   "description": "a vue directive to use on img elements to zoom on hover",
   "author": "jd1378",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:jd1378/vue-simple-magnifier.git"
+    "url": "git@github.com:jd1378/v-simple-magnifier.git"
   },
   "dependencies": {
     "node-sass": "^4.13.1",
