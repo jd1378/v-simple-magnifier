@@ -103,7 +103,7 @@ class MagnifierDirective {
       this.zoomImage = document.createElement('img');
       this.zoomImage.style.position = 'absolute';
       this.zoomImage.style.objectFit = 'contain';
-      this.zoomImage.style.maxWidth = 'none !important';
+      this.zoomImage.style.maxWidth = 'none';
       this.zoomImage.style.top = 0;
       this.zoomImage.style.left = 0;
       this.zoomImage.src = this.options.src;
