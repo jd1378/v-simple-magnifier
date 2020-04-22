@@ -3,11 +3,6 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'ServeDev',
-  computed: {
-    imgRef() {
-      return this.$refs.img;
-    },
-  },
 });
 </script>
 
