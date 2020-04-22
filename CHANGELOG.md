@@ -1,3 +1,6 @@
+## 1.0.2
+
+fix a bug where maxWidth none was not being set.
 
 ## 1.0.1
 
