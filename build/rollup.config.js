@@ -10,7 +10,8 @@ import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
 
 // Get browserslist config and remove ie from es build targets
-const esbrowserslist = fs.readFileSync('./.browserslistrc')
+const esbrowserslist = fs
+  .readFileSync('./.browserslistrc')
   .toString()
   .split('\n')
   .filter((entry) => entry && entry.substring(0, 2) !== 'ie');
@@ -101,7 +102,7 @@ if (!argv.format || argv.format === 'cjs') {
       compact: true,
       file: 'dist/index.ssr.js',
       format: 'cjs',
-      name: 'VueStickyElement',
+      name: 'VSimpleMagnifier',
       exports: 'named',
       globals,
     },
@@ -129,7 +130,7 @@ if (!argv.format || argv.format === 'iife') {
       compact: true,
       file: 'dist/index.min.js',
       format: 'iife',
-      name: 'VueStickyElement',
+      name: 'VSimpleMagnifier',
       exports: 'named',
       globals,
     },
