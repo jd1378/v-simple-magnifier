@@ -4,6 +4,9 @@ a vue directive to use on img elements to zoom on hover
 
 most of the credit goes to [anthinkingcoder](https://github.com/anthinkingcoder/vue-image-magnifier), I made my directive based on that
 
+[![directive in action](https://thumbs.gfycat.com/HorribleLeanHoopoe-size_restricted.gif)](https://gfycat.com/HorribleLeanHoopoe)
+
+[![Edit v-simple-magnifier](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/v-simple-magnifier-mm3j2?fontsize=14&hidenavigation=1&theme=dark)
 
 ## usage
 
