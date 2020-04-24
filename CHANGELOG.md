@@ -1,4 +1,8 @@
-## 1.0.3
+## 1.1.0
+
+directive is reusable now (previously there couldn't be more than one directive use in one page).
+
+## 1.0.3 (skipped)
 
 fixed a bug where it wasn't able to work correctly on page reload
 

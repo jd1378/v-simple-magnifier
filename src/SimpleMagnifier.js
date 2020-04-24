@@ -59,6 +59,8 @@ class MagnifierDirective {
     this._setOptions(el, binding);
     this._setDefaults();
     this.initComponent();
+    this.unbind();
+    this.addListeners();
   }
 
   calculateStyles() {
@@ -129,7 +131,10 @@ class MagnifierDirective {
       this.zoomImageWrapper.style.backgroundColor = this.options.emptyBackgroundColor;
       this.zoomImage.src = this.options.src;
     }
+    this.el.style.cursor = this.options.cursor;
+  }
 
+  addListeners() {
     this.el.addEventListener('mouseenter', this.mouseEnter.bind(this), {
       passive: true,
     });
@@ -139,10 +144,11 @@ class MagnifierDirective {
     this.el.addEventListener('mousemove', this.mouseMove.bind(this), {
       passive: true,
     });
-    this.el.style.cursor = this.options.cursor;
   }
+
   mouseEnter() {
     clearTimeout(this.zoomOutTimeoutId);
+    this.initComponent();
     this.calcZoomSize();
     if (this.options.delayIn === 0) {
       this.zoomWrapper.style.display = '';
