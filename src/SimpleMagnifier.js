@@ -1,6 +1,26 @@
 class MagnifierDirective {
   constructor(el, binding) {
-    this.el = el;
+    this.updateBinding(el, binding);
+  }
+
+  _setDefaults() {
+    this.zoomPosition = {
+      x: 0,
+      y: 0,
+    };
+    this.zoomBoxPosition = {
+      x: 0,
+      y: 0,
+    };
+    this.maskX = 0;
+    this.maskY = 0;
+    this.zoomOutTimeoutId = undefined;
+    this.zoomInTimeoutId = undefined;
+    this.zoomImgWidth = 0;
+    this.zoomImgHeight = 0;
+  }
+
+  _setOptions(el, binding) {
     this.options = binding.value || {};
     if (!this.options.src) {
       this.options.src = el.src;
@@ -32,22 +52,12 @@ class MagnifierDirective {
     if (!this.options.emptyBackgroundColor) {
       this.options.emptyBackgroundColor = 'white';
     }
+  }
 
-    this.zoomPosition = {
-      x: 0,
-      y: 0,
-    };
-    this.zoomBoxPosition = {
-      x: 0,
-      y: 0,
-    };
-    this.maskX = 0;
-    this.maskY = 0;
-    this.zoomOutTimeoutId = undefined;
-    this.zoomInTimeoutId = undefined;
-    this.zoomImgWidth = 0;
-    this.zoomImgHeight = 0;
-
+  updateBinding(el, binding) {
+    this.el = el;
+    this._setOptions(el, binding);
+    this._setDefaults();
     this.initComponent();
   }
 
@@ -112,6 +122,12 @@ class MagnifierDirective {
       this.zoomWrapper.appendChild(this.zoomImageWrapper);
 
       document.body.appendChild(this.zoomWrapper);
+    } else {
+      this.zoomMask = this.zoomWrapper.children[0];
+      this.zoomImageWrapper = this.zoomWrapper.children[1];
+      this.zoomImage = this.zoomWrapper.children[1].children[0];
+      this.zoomImageWrapper.style.backgroundColor = this.options.emptyBackgroundColor;
+      this.zoomImage.src = this.options.src;
     }
 
     this.el.addEventListener('mouseenter', this.mouseEnter.bind(this), {
@@ -230,6 +246,13 @@ export default {
   bind(el, binding) {
     el._magnifierDirective = new MagnifierDirective(el, binding);
   },
+  /* update(el, binding) {
+    if (el._magnifierDirective) {
+      el._magnifierDirective.updateBinding(el, binding);
+    } else {
+      el._magnifierDirective = new MagnifierDirective(el, binding);
+    }
+  }, */
   unbind(el) {
     if (el._magnifierDirective) {
       el._magnifierDirective.unbind();

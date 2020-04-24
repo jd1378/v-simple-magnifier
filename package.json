@@ -1,6 +1,6 @@
 {
   "name": "v-simple-magnifier",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a vue directive to use on img elements to zoom on hover",
   "author": "jd1378",
   "license": "MIT",
