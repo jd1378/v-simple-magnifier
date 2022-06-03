@@ -1,9 +1,10 @@
 
 
 name: Dependabot auto-merge
-on: pull_request
+on: pull_request_target # use carefully
 
 permissions:
+  pull-requests: write
   contents: write
 
 jobs:
@@ -19,5 +20,5 @@ jobs:
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.PAT_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
