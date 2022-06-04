@@ -16,6 +16,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         author: app/dependabot
         state: open
+        
 
   merge:
     needs: get_ids_job
@@ -23,7 +24,15 @@ jobs:
     strategy:
       matrix:
         html_urls: ${{fromJson(needs.get_ids_job.outputs.html_urls)}}
+
     steps:
+        # Here the PR gets approved.
+      - name: Approve a PR
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ matrix.html_urls }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: merge pr id
         run: gh pr merge --auto --merge "$PR_URL"
         env: 
