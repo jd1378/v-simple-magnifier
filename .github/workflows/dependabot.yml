@@ -7,6 +7,8 @@ permissions:
   pull-requests: write
   contents: write
 
+concurrency: merging_env
+
 jobs:
   dependabot:
     runs-on: ubuntu-latest
