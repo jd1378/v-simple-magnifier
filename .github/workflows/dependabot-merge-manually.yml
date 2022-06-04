@@ -11,7 +11,7 @@ jobs:
       html_urls: ${{ steps.get_pull_requests.outputs.html_urls }}
     steps:
     - id: get_pull_requests
-      uses: jd1378/filter_pull_requests_by_author@v2-beta-0
+      uses: jd1378/filter_pull_requests_by_author@v2
       with: 
         token: ${{ secrets.GITHUB_TOKEN }}
         author: app/dependabot
