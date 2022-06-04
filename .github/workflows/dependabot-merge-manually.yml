@@ -8,6 +8,9 @@ on:
         description: 'comment body to send on pull requests'
         required: true 
         type: string 
+    secrets:
+      envPAT:
+        required: false
 
 jobs:
   get_pull_requests_ids:
@@ -30,5 +33,6 @@ jobs:
       - name: add comment
         uses: peter-evans/create-or-update-comment@v2
         with:
+          token: ${{ secrets.envPAT || secrets.GITHUB_TOKEN }}
           issue-number: ${{ matrix.ids }}
           body: ${{ github.event.inputs.comment_body }} 
