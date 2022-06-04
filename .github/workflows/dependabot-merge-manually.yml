@@ -5,23 +5,24 @@ name: merge all dependabot pull requests
 on: workflow_dispatch
 
 jobs:
-  get_pull_requests_ids:
+  get_ids_job:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.get_pull_requests.outputs.result }}
+      html_urls: ${{ steps.get_pull_requests.outputs.html_urls }}
     steps:
     - id: get_pull_requests
-      uses: jd1378/filter_pull_requests_by_author@v1.2.1
+      uses: jd1378/filter_pull_requests_by_author@v2-beta-0
       with: 
         token: ${{ secrets.GITHUB_TOKEN }}
         author: app/dependabot
         state: open
 
   merge:
-    needs: get_pull_requests_ids
+    needs: get_ids_job
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{fromJson(needs.get_pull_requests_ids.outputs.matrix).html_urls}}
+      matrix:
+        html_urls: ${{fromJson(needs.get_ids_job.outputs.html_urls)}}
     steps:
       - name: merge pr id
         run: gh pr merge --auto --merge "$PR_URL"
