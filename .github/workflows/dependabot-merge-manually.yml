@@ -24,7 +24,8 @@ jobs:
       matrix: ${{fromJson(needs.get_pull_requests_ids.outputs.matrix)}}
     steps:
       - name: merge pr id
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{ matrix.html_urls }}
+        run: |
+          echo ${{ matrix.html_urls }};
+          gh pr merge --auto --merge "${{ matrix.html_urls }}";
+        env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
