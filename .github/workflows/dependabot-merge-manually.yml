@@ -21,7 +21,7 @@ jobs:
     needs: get_pull_requests_ids
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{fromJson(needs.get_pull_requests_ids.outputs.matrix)}}
+      matrix: ${{fromJson(needs.get_pull_requests_ids.outputs.matrix).html_urls}}
     steps:
       - name: merge pr id
         run: gh pr merge --auto --merge "$PR_URL"
