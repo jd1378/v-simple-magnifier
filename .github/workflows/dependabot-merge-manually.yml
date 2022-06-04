@@ -3,10 +3,11 @@
 name: trigger dependabot auto merge
 on: 
   workflow_dispatch:
-    comment_body:
-      description: 'comment body to send on pull requests'
-      required: true 
-      type: string 
+    inputs:
+      comment_body:
+        description: 'comment body to send on pull requests'
+        required: true 
+        type: string 
 
 jobs:
   get_pull_requests_ids:
