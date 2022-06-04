@@ -20,6 +20,7 @@ jobs:
       with: 
         token: ${{ secrets.GITHUB_TOKEN }}
         author: app/dependabot
+        state: open
 
   add_comment:
     needs: get_pull_requests_ids
