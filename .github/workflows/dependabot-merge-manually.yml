@@ -30,6 +30,6 @@ jobs:
       - name: add comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          token: ${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
           issue-number: ${{ matrix.ids }}
           body: ${{ github.event.inputs.comment_body }} 
